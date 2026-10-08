@@ -1,0 +1,35 @@
+Model: candidates+=Candidate;
+Candidate: 'Candidate' name=STRING '{'
+    contact=Contact
+    summary=Summary
+    experience*=Experience
+    skills=Skills
+    evaluation=Evaluationes
+'}';
+
+Contact: 'Contact' '{'
+    'email' email=STRING
+    'location' location=STRING
+    'role' role=STRING
+'}';
+
+Summary: 'Summary' '{'
+    'text' text=STRING
+'}';
+
+Experience: 'Experience' '{'
+    'title' title=STRING
+    'company' company=STRING
+    'years' years=INT
+    'description' description=STRING
+'}';
+
+Skills: 'Skills' '{'
+    skills+=STRING[',']
+'}';
+
+Evaluation: 'Evaluation' '{'
+    'profile' profile=STRING
+    'result' result=STRING
+    'explanation' explanation=STRING
+'}';
