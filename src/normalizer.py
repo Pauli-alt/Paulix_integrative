@@ -1,4 +1,36 @@
-from pyformlang.fst import FST
+class FST:
+    """Implementación simple de un Transductor de Estados Finitos."""
+    def __init__(self):
+        self.states = set()
+        self.transitions = {}  # (state, input) -> (next_state, output)
+        self.initial_state = None
+        self.final_states = set()
+
+    def add_state(self):
+        state = len(self.states)
+        self.states.add(state)
+        return state
+
+    def add_transition(self, from_state, input_symbol, to_state, output_symbols):
+        self.transitions[(from_state, input_symbol)] = (to_state, output_symbols)
+
+    def add_initial_state(self, state):
+        self.initial_state = state
+
+    def add_final_state(self, state):
+        self.final_states.add(state)
+
+    def transduce(self, input_sequence):
+        """Aplica el transductor a una secuencia de entrada."""
+        results = []
+        for inp in input_sequence:
+            current = self.initial_state
+            key = (current, inp)
+            if key in self.transitions:
+                next_state, output = self.transitions[key]
+                results.extend(output)
+        return results
+
 
 class Normalizer:
     """

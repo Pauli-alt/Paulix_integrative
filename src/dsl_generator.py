@@ -28,7 +28,7 @@ Experience: 'Experience' '{'
 '}';
 
 Skills: 'Skills' '{'
-    skills+=STRING[',']
+    skills+=ID[',']
 '}';
 
 Evaluation: 'Evaluation' '{'
